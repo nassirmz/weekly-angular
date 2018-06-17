@@ -1,0 +1,10 @@
+<mat-card>
+  <table class="board-container">
+    <tr class="board-row">
+      <td *ngFor="let day of days" class="board-column">
+        <app-column [day]="day"></app-column>
+      </td>
+    </tr>
+  </table>
+</mat-card>
+

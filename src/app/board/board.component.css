@@ -1,0 +1,16 @@
+.board-container {
+  border: 3px solid #aaa;
+  width: 100%;
+}
+
+
+.board-row {
+  display: flex;
+  width: 100%;
+}
+
+.board-column {
+  flex: 1;
+  border: 1px solid #aaa;
+  vertical-align: middle;
+}
