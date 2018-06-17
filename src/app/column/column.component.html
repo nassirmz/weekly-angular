@@ -3,7 +3,9 @@
       <table>
         <thead>
         <tr>
-          <th>{{day}}</th>
+          <th class="table-header">
+            <app-add-task [title]="day"></app-add-task>
+          </th>
         </tr>
         </thead>
         <tbody ngClass="{{day}}">

@@ -1,0 +1,13 @@
+.add-task-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-task-container span {
+  font-size: 24px;
+}
+
+/*.add-task-container span, .add-task-container a {*/
+  /*flex: 1;*/
+/*}*/

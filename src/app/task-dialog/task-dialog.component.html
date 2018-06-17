@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add Task</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.task.taskName" placeholder="Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput tabindex="2" [(ngModel)]="data.task.points" placeholder="Points">
+  </mat-form-field>
+  <div>
+    <mat-checkbox [(ngModel)]="data.isAllWeek">Weekly Task</mat-checkbox>
+
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+</div>
