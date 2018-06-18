@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import  {MatDialog, MatDialogRef} from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../task';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -11,30 +12,40 @@ import { Task } from '../task';
 export class AddTaskComponent implements OnInit {
   @Input() title: string;
   task: Task;
-  isAllWeek: boolean;
 
-  constructor(public dialog: MatDialog) {
-  }
+  constructor(
+    public dialog: MatDialog,
+    private taskService: TaskService
+  ) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '400px',
-      data: { task: this.task, isAllWeek: this.isAllWeek }
+      data: this.task
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      console.log('result', result);
+      this.addTask(result);
     });
+  }
+
+  private addTask(task) {
+    this.taskService.addTask(task)
+      .subscribe(savedTask => console.log('saved task ', savedTask));
   }
 
   ngOnInit() {
     this.task = {
       taskName: '',
       points: 1,
-      days: [this.title]
+      days: [
+        {
+          'day': this.title
+        }
+      ],
+      isAllWeek: false
     };
-
-    this.isAllWeek = false;
   }
 }
 

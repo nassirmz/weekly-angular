@@ -11,9 +11,7 @@ export class TaskDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    console.log('data', this.data);
-  }
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

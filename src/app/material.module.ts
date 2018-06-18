@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
-  MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule,
+  MatButtonModule, MatButtonToggleModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
   MatToolbarModule
 } from '@angular/material';
 
@@ -11,7 +12,10 @@ import {
     MatDialogModule,
     MatIconModule,
     MatFormFieldModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatButtonModule,
+    MatButtonToggleModule
   ],
   declarations: []
 })

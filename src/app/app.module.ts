@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
 
@@ -25,9 +26,12 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule
     MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TaskDialogComponent]
+
 })
 export class AppModule { }
