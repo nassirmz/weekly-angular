@@ -12,6 +12,10 @@ import { TaskService } from '../task.service';
 export class AddTaskComponent implements OnInit {
   @Input() title: string;
   task: Task;
+  taskToBePosted: {
+    task: Task,
+    weeklyTask: boolean
+  };
 
   constructor(
     public dialog: MatDialog,
@@ -21,7 +25,7 @@ export class AddTaskComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '400px',
-      data: this.task
+      data: this.taskToBePosted
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,21 +34,23 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  private addTask(task) {
-    this.taskService.addTask(task)
-      .subscribe(savedTask => console.log('saved task ', savedTask));
+  private addTask(taskToBePosted) {
+    console.log('taskToBePosted', taskToBePosted);
+    this.taskService.addTask(taskToBePosted)
+      .subscribe((savedTask: Task[]) => console.log('saved task ', savedTask));
   }
 
   ngOnInit() {
     this.task = {
       taskName: '',
       points: 1,
-      days: [
-        {
-          'day': this.title
-        }
-      ],
-      isAllWeek: false
+      day: this.title,
+      finishedPoints: 0,
+    };
+
+    this.taskToBePosted = {
+      task: this.task,
+      weeklyTask: false
     };
   }
 }

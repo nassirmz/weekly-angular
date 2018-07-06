@@ -26,8 +26,8 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
-    MaterialModule
+    HttpClientModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 export class Task {
   taskName: string;
   points: number;
-  days: Array<any>;
+  finishedPoints: number;
+  day: string;
 }
