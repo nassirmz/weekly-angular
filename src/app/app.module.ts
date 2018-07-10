@@ -12,6 +12,9 @@ import { BoardComponent } from './board/board.component';
 import { ColumnComponent } from './column/column.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { DraggableDirective } from './draggable.directive';
+import { DroppableDirective } from './droppable.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
     ColumnComponent,
     AddTaskComponent,
     TaskDialogComponent,
+    TaskCardComponent,
+    DraggableDirective,
+    DroppableDirective,
   ],
   imports: [
     BrowserModule,

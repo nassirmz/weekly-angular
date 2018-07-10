@@ -2,17 +2,20 @@
     <tr>
       <table>
         <thead>
-        <tr>
-          <th class="table-header">
-            <app-add-task [title]="day"></app-add-task>
-          </th>
-        </tr>
+          <tr>
+            <th class="table-header">
+              <app-add-task [title]="day"></app-add-task>
+            </th>
+          </tr>
         </thead>
         <tbody ngClass="{{day}}">
-        <tr>
-          <td>
-          </td>
-        </tr>
+          <tr>
+            <td appDroppable>
+              <div *ngFor="let task of tasks">
+                <app-task-card [taskName]="task.taskName" [appDraggable]="task"></app-task-card>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </tr>

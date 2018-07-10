@@ -35,7 +35,6 @@ export class AddTaskComponent implements OnInit {
   }
 
   private addTask(taskToBePosted) {
-    console.log('taskToBePosted', taskToBePosted);
     this.taskService.addTask(taskToBePosted)
       .subscribe((savedTask: Task[]) => console.log('saved task ', savedTask));
   }
