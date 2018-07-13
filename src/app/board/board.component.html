@@ -2,7 +2,7 @@
   <table class="board-container">
     <tr class="board-row">
       <td *ngFor="let day of days" class="board-column">
-        <app-column [day]="day" [tasks]="filterColumnSpecificTasks(day)"></app-column>
+        <app-column [day]="day" [tasks]="allTasks[day]"></app-column>
       </td>
     </tr>
   </table>

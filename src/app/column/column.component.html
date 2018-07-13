@@ -10,7 +10,7 @@
         </thead>
         <tbody ngClass="{{day}}">
           <tr>
-            <td appDroppable>
+            <td appDroppable [day]="day">
               <div *ngFor="let task of tasks">
                 <app-task-card [taskName]="task.taskName" [appDraggable]="task"></app-task-card>
               </div>
