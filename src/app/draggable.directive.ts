@@ -15,8 +15,6 @@ export class DraggableDirective implements OnInit {
     el.addEventListener('dragstart', (ev) => {
       ev.dataTransfer.effectAllowed = 'move';
       ev.dataTransfer.setData('text', JSON.stringify(this.task));
-      console.log('dataSet', ev.dataTransfer.getData('text'));
-      return true;
     });
   }
 }

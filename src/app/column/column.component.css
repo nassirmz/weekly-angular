@@ -4,6 +4,9 @@ table {
 
 th, td {
   border: 1px solid #aaa;
+}
+
+th {
   padding: 5px 15px;
 }
 

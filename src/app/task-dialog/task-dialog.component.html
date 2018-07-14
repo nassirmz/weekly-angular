@@ -12,6 +12,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" tabindex="2">Save</button>
+  <button mat-button [mat-dialog-close]="data" tabindex="2" [disabled]="!data.task.taskName.length">Save</button>
   <button mat-button (click)="onNoClick()">No Thanks</button>
 </div>

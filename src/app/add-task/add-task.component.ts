@@ -20,7 +20,8 @@ export class AddTaskComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private taskService: TaskService
-  ) {}
+  ) {
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
@@ -29,8 +30,9 @@ export class AddTaskComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result', result);
-      this.addTask(result);
+      if (result && result.task.taskName.length) {
+        this.addTask(result);
+      }
     });
   }
 
