@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { days } from '../days';
-import { Task } from '../task';
 import { TaskService } from '../task.service';
-import { DropService } from '../drop.service';
+import { ComponentInteractionService } from '../component-interaction.service';
 
 @Component({
   selector: 'app-board',
@@ -13,9 +12,12 @@ export class BoardComponent implements OnInit {
   days: string[] = days;
   allTasks: any = {};
 
-  constructor(private taskService: TaskService, private dropService: DropService) {
-    dropService.movedTaskData$.subscribe(
+  constructor(private taskService: TaskService, private componentInteractionService: ComponentInteractionService) {
+    componentInteractionService.draggedTaskData$.subscribe(
       taskData => this.dragTask(taskData)
+    );
+    componentInteractionService.addedTaskData$.subscribe(
+      tasksData => this.addTasks(tasksData)
     );
   }
 
@@ -43,6 +45,16 @@ export class BoardComponent implements OnInit {
             );
           });
         this.allTasks[updatedTask.day].push(updatedTask);
+      }
+    );
+  }
+
+  addTasks(tasksToBeAdded): void {
+    this.taskService.addTasks(tasksToBeAdded).subscribe(
+      addedTasks => {
+        addedTasks.forEach(addedTask => {
+          this.allTasks[addedTask.day].push(addedTask);
+        });
       }
     );
   }

@@ -17,7 +17,7 @@ export class TaskService {
   private tasksUrl = 'http://localhost:8080/api/tasks';
   constructor(private http: HttpClient) { }
 
-  addTask (taskRequestObj: TaskRequestObj): Observable<Task[]> {
+  addTasks (taskRequestObj: TaskRequestObj): Observable<Task[]> {
     return this.http.post<Task[]>(this.tasksUrl, taskRequestObj, httpOptions).pipe(
         catchError(this.handleError<Task[]>('addTask'))
     );

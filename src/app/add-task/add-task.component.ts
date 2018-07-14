@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../task';
 import { TaskService } from '../task.service';
+import { ComponentInteractionService } from '../component-interaction.service';
 
 @Component({
   selector: 'app-add-task',
@@ -19,7 +20,8 @@ export class AddTaskComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private componentInteractionService: ComponentInteractionService
   ) {
   }
 
@@ -31,14 +33,9 @@ export class AddTaskComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.task.taskName.length) {
-        this.addTask(result);
+        this.componentInteractionService.serveAddedTaskData(result);
       }
     });
-  }
-
-  private addTask(taskToBePosted) {
-    this.taskService.addTask(taskToBePosted)
-      .subscribe((savedTask: Task[]) => console.log('saved task ', savedTask));
   }
 
   ngOnInit() {

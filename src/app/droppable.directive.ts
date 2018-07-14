@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { DropService } from './drop.service';
+import { ComponentInteractionService } from './component-interaction.service';
 
 @Directive({
   selector: '[appDroppable]'
@@ -9,7 +9,7 @@ export class DroppableDirective implements OnInit {
 
   constructor(
     private _elementRef: ElementRef,
-    private dropService: DropService,
+    private componentInteractionService: ComponentInteractionService,
   ) { }
 
   ngOnInit() {
@@ -17,13 +17,11 @@ export class DroppableDirective implements OnInit {
 
     el.addEventListener('dragenter', (ev) => {
       ev.preventDefault();
-      console.log('dragenter', el);
       return true;
     });
 
     el.addEventListener('dragover', (ev) => {
       ev.preventDefault();
-      console.log('dragOverDataSet', ev.dataTransfer.getData('text'));
       return false;
     });
 
@@ -32,7 +30,7 @@ export class DroppableDirective implements OnInit {
       const taskData = JSON.parse(e.dataTransfer.getData('text'));
       taskData.day = this.day;
       console.log('droppedData', taskData);
-      this.dropService.serveMovedTaskData(taskData);
+      this.componentInteractionService.serveDraggedTaskData(taskData);
       e.preventDefault();
       return false;
     });
