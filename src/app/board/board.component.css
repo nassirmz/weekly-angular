@@ -1,8 +1,21 @@
-.board-container {
-  border: 3px solid #aaa;
+table, tr, td {
   width: 100%;
+  height: 100%;
 }
 
+mat-card {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  padding: 10px;
+}
+
+.board-container {
+  border: 3px solid #aaa;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
 
 .board-row {
   display: flex;
